@@ -1,12 +1,53 @@
 #include <stdio.h>
+#include "mazeGameStructs.h"
+#include "mazeGameStack.h"
 
-#define MAP_SIZE 20
+bool generateMaze(Maze *maze)
+{
+  memset(maze,false,sizeof(Maze));
 
-typedef struct position{
+  for(int i=0;i<MAP_SIZE;i++)
+    {
+      for(int j=0;j<MAP_SIZE;j++)
+	{
+	  // setting borders on edges
+	  if(j == 0)
+	    {
+	      maze[i][j]->border[0]=true;
+	    }
+	  if(j == MAP_SIZE-1)
+	    {
+	      maze[i][j]->border[2]=true;
+	    }
+	  if(i == 0)
+	    {
+	      maze[i][j]->border[3]=true;
+	    }
+	  if(i== MAP_SIZE)
+	    {
+	      maze[i][j]->border[1]=true;
+	    }
+	  //set all walls up
+	  memset(maze[i][j]->wall,true,sizeof(bool)*4);
+	}
+    }
+	 return true;
+}
 
-  int xposition;
-  int yposition;
-} position;
+    bool generatePath(Maze *maze)
+    {
+      CellNode *head;
+      createStack(&head);
+      int totalCells = MAP_SIZE*MAP_SIZE;
+      int i = rand()%MAP_SIZE;
+      int j = rand()%MAP_SIZE;
+      Cell *currentCell = maze[i][j]; 
+      int visitedCells = 1;
+      while (visitedCells < totalCells)
+	{
+	}
+      
+    }
 
 void updatePosition(position *pos, char c)
 {
