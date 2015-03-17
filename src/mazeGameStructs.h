@@ -1,14 +1,21 @@
+
+#ifndef cgame_mazegamestructs_h
+#define cgame_mazegamestructs_h
+
 #include <stdbool.h>
 
 #define MAP_SIZE 20
 
-enum PRdirection{NORTH, EAST, SOUTH, WEST} ;
-
+typedef struct Position{
+    
+    int x;
+    int y;
+} Position;
 
 typedef struct Cell{
   // 0 - north, 1 - east, 2 - south, 3 west
   
-    Position position;
+    Position *position;
     
     bool border[4];
     bool wall[4];
@@ -19,10 +26,6 @@ typedef struct Cell{
 
 typedef Cell Maze[MAP_SIZE][MAP_SIZE];
 
+#endif
 
 
-typedef struct Position{
-
-  int x;
-  int y;
-} Position;
