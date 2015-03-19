@@ -14,17 +14,17 @@ Cell* selectNextCell(int direction,Maze *maze, int i, int j)
     switch(direction) {
         case 0: // north
             
-            return maze[i][j+1];
+            return &maze[i][j+1];
             
         case 1: // east
             
-            return maze[i+1][j];
+            return &maze[i+1][j];
         case 2: // south
             
-            return maze[i][j-1];
+            return &maze[i][j-1];
         case 3: // west
             
-            return maze[i-1][j];
+            return &maze[i-1][j];
             
         default:
             return NULL;
@@ -42,11 +42,13 @@ int selectRandomDirection(const Cell *cell, int randomIndex)
     {
         if (!cell->border[direction]) {
             
-            --randomIndex;
+            printf("random index count: %d\n", randomIndex);
             if(randomIndex == 0)
             {
                 return direction;
             }
+            --randomIndex;
+
         }
     }
     printf("should not be reached!\n");
@@ -54,11 +56,11 @@ int selectRandomDirection(const Cell *cell, int randomIndex)
     
 }
 
-bool intactWalls(const Cell *cell)
+bool intactWalls(const Cell cell)
 {
     for(int i=0; i<4; i++)
     {
-        if(!cell->wall[i])
+        if(!cell.wall[i])
         {
             return false;
         }
@@ -69,13 +71,26 @@ bool intactWalls(const Cell *cell)
 int intactNeighboursCount(const Maze *maze, int width, int height)
 {
     int count = 0;
-    for(int i=0; i<4; i++)
-    {
-        if(width > 0 && intactWalls(maze[width-1][height])) ++count;
-        if(height > 0 && intactWalls(maze[width][height-1])) ++count;
-        if(width < MAP_SIZE-1 && intactWalls(maze[width+1][height])) ++count;
-        if(height < MAP_SIZE-1 && intactWalls(maze[width][height+1])) ++count;
-    }
+        if(width > 0 && intactWalls(maze[width-1][height]))
+        {
+            printf("east wall intact\n");
+            count++;
+        }
+        if(height > 0 && intactWalls(maze[width][height-1]))
+        {
+            printf("north wall intact\n");
+            count++;
+        }
+        if(width < MAP_SIZE-1 && intactWalls(maze[width+1][height]))
+        {
+            printf("west wall intact\n");
+            count++;
+        }
+        if(height < MAP_SIZE-1 && intactWalls(maze[width][height+1]))
+        {
+            printf("south wall intact\n");
+            count++;
+        }
     return count;
 }
 
@@ -88,15 +103,18 @@ bool generatePath(Maze *maze)
     int totalCells = MAP_SIZE*MAP_SIZE;
     int i = rand()%MAP_SIZE;
     int j = rand()%MAP_SIZE;
-    Cell *currentCell = maze[i][j];
+    Cell *currentCell = &maze[i][j];
     Cell *nextCell;
     int visitedCells = 1;
+    printf("start loop\n");
     while (visitedCells < totalCells)
     {
-        int intactCount;
-        if( (intactCount = intactNeighboursCount(maze, i, j) > 0))
+        printf("visited cells count: %d Current cell: %d %d \n", visitedCells,i,j);
+        int intactCount = intactNeighboursCount(maze, i, j);
+        if(intactCount > 0)
         {
             // select random cell
+            printf("intact count: %d random direction chosen: %d \n",intactCount, rand()%intactCount);
             int randomDirection = selectRandomDirection(currentCell, rand()%intactCount);
             nextCell = selectNextCell(randomDirection, maze,i,j);
             destroyWall(randomDirection, currentCell, nextCell);
@@ -108,8 +126,8 @@ bool generatePath(Maze *maze)
         {
             popCell(&head, &currentCell);
         }
-        i = currentCell->position->x;
-        j = currentCell->position->y;
+        i = currentCell->position.x;
+        j = currentCell->position.y;
     }
     return true;
 }

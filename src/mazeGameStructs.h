@@ -15,7 +15,7 @@ typedef struct Position{
 typedef struct Cell{
   // 0 - north, 1 - east, 2 - south, 3 west
   
-    Position *position;
+    Position position;
     
     bool border[4];
     bool wall[4];
@@ -24,7 +24,9 @@ typedef struct Cell{
 }Cell;
 
 
-typedef Cell Maze[MAP_SIZE][MAP_SIZE];
+typedef Cell Maze[MAP_SIZE];
+//typedef Cell Maze[MAP_SIZE];
+
 
 #endif
 

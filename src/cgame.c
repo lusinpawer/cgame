@@ -5,6 +5,7 @@
 
 bool generateMaze(Maze *maze)
 {
+    printf("start generating maze\n");
     memset(maze,false,sizeof(Maze));
     
     for(int i=0;i<MAP_SIZE;i++)
@@ -12,11 +13,12 @@ bool generateMaze(Maze *maze)
         for(int j=0;j<MAP_SIZE;j++)
         {
             //set all walls up
-            maze[i][j]->position->x = i;
-            maze[i][j]->position->y = j;
-            memset(maze[i][j]->wall,true,sizeof(bool)*4);
+            maze[i][j].position.x = i;
+            maze[i][j].position.y = j;
+            memset(maze[i][j].wall,true,sizeof(bool)*4);
         }
     }
+    printf("start generating path\n");
     generatePath(maze);
     
     
@@ -66,7 +68,9 @@ void generateMap(Position *pos)
 
 int main()
 {
-    Maze *maze = NULL;
+    printf("start!!\n");
+    Cell cellArray[MAP_SIZE][MAP_SIZE];
+    Maze *maze = cellArray;
     generateMaze(maze);
     
     Position *currentPosition = NULL;
@@ -83,8 +87,6 @@ int main()
         updatePosition(currentPosition,c);
     }
     
-    
-    free(maze);
     return 0;
 }
 
