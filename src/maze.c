@@ -35,7 +35,6 @@ Cell* selectNextCell(int direction,Maze *maze, int i, int j)
 
 int selectRandomDirection(const Cell *cell, int randomIndex, bool *intactNeighbours)
 {
-    int direction = 0;
     for(int direction = 0; direction < 4; direction++)
     {
         debug("Direction: %d wall exists: %d border exists: %d\n", direction, cell->wall[direction],cell->border[direction]);

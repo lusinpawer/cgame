@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		181E053C1ABBF58200A830D7 /* map.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = map.c; path = src/map.c; sourceTree = "<group>"; };
+		181E053D1ABBF58200A830D7 /* map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = map.h; path = src/map.h; sourceTree = "<group>"; };
 		181EDB091AB7B2C500D10BC5 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		181EDB0A1AB7B68F00D10BC5 /* cgame.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cgame.c; path = src/cgame.c; sourceTree = "<group>"; };
 		181EDB0B1AB7B68F00D10BC5 /* mazeGameStructs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mazeGameStructs.h; path = src/mazeGameStructs.h; sourceTree = "<group>"; };
@@ -21,6 +23,8 @@
 		181D0ABC1AB6AA4300C933ED = {
 			isa = PBXGroup;
 			children = (
+				181E053C1ABBF58200A830D7 /* map.c */,
+				181E053D1ABBF58200A830D7 /* map.h */,
 				181EDB0A1AB7B68F00D10BC5 /* cgame.c */,
 				181EDB0B1AB7B68F00D10BC5 /* mazeGameStructs.h */,
 				181EDB0C1AB7B68F00D10BC5 /* maze.c */,
