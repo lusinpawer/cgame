@@ -1,9 +1,12 @@
 #ifndef cgame_mazegamestack_h
 #define cgame_mazegamestack_h
 
+#define NDEBUG
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <stddef.h>
+#include "dbg.h"
 #include "MazeGameStructs.h"
 
 typedef struct CellNode

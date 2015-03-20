@@ -9,21 +9,27 @@ bool pushCell(CellNode **head, Cell *cell)
     {
       return false;
     }
-    printf("Pushing node\n");
+    debug("Pushing node\n");
     newNode->next = *head;
     newNode->cell = cell;
     *head = newNode;
+    debug("Finished pushing\n");
     return true;
 }
 
 bool popCell(CellNode **head, Cell **cell)
 {
-  printf("Popping element \n");
+  debug("Popping element \n");
   CellNode *tempCell;
-  if (!(tempCell=*head)) return false;
+  if (!(tempCell=*head))
+  {
+      debug("pop error, returning\n");
+      return false;
+  }
+    
   *cell = tempCell->cell;
   *head = tempCell->next;
-  free(head);
+  free(tempCell);
   return true;
 }
 
@@ -38,11 +44,11 @@ bool deleteStack(CellNode **head)
   CellNode *next;
   while(*head)
     {
-      printf("popping\n");
+      debug("popping\n");
       next = (*head)->next;
       free(*head);
       *head = next;
     }
-  printf("Stack empty\n");
+  debug("Stack empty\n");
   return true;
 }

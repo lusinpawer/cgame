@@ -8,6 +8,9 @@ int main(int argc, char **argv)
   pushCell(&cn,c);
   pushCell(&cn,c);
   pushCell(&cn,c);
+    popCell(&cn,&c);
+    popCell(&cn,&c);
+
   deleteStack(&cn);
   return 0;
 }  

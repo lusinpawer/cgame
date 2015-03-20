@@ -4,7 +4,7 @@
 
 #include <stdbool.h>
 
-#define MAP_SIZE 20
+#define MAP_SIZE 4
 
 typedef struct Position{
     
