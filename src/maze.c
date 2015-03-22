@@ -103,6 +103,7 @@ bool generatePath(Maze *maze)
     CellNode *head;
     createStack(&head);
     int totalCells = MAP_SIZE*MAP_SIZE;
+    srand(time(NULL));
     int i = rand()%MAP_SIZE;
     int j = rand()%MAP_SIZE;
     Cell *currentCell = &maze[i][j];

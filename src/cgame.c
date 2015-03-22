@@ -21,7 +21,7 @@ int main()
     
     generateMap(currentPosition);
 
-    printf("Press one of the a (left),s (down),d (right),w (top) followed by ENTER to walk around the maze \n");
+    printf("\nPress one of the a (left),s (down),d (right),w (top) followed by ENTER to walk around the maze \n");
     while(1)
     {
         if((c = getchar()) != '\n')
