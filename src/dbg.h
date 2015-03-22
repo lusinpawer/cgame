@@ -1,5 +1,5 @@
-# Zed Shaw's Zed's Awesome Debug Macros
-# http://c.learncodethehardway.org/book/ex20.html
+// Zed Shaw's Zed's Awesome Debug Macros
+// http://c.learncodethehardway.org/book/ex20.html
 
 #ifndef __dbg_h__
 #define __dbg_h__

@@ -1,5 +1,5 @@
-# Perfect maze algorithm based on pseudocode from
-# http://www.mazeworks.com/mazegen/mazetut/
+// Perfect maze algorithm based on pseudocode from
+// http://www.mazeworks.com/mazegen/mazetut/
 
 
 #ifndef cgame_maze_h
